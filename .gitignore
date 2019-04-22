@@ -6,6 +6,7 @@ target/**
 .autosave/**
 .mvn/**
 .idea/**
+.settings/**
 
 pom.xml.tag
 pom.xml.releaseBackup
