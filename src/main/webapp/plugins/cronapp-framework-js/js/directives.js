@@ -2699,11 +2699,12 @@
       restrict: 'E',
       require: 'ngModel',
       link: function (scope, element, attrs, ngModelCtrl) {
-        var _self = this;
-        var select = {};
         var modelGetter = $parse(attrs['ngModel']);
         var modelSetter = modelGetter.assign;
-        var model = attrs.ngModel;
+        var model = attrs['ngModel'];
+        
+        var _self = this;
+        var select = {};
         try {
           select = JSON.parse(attrs.options);
         } catch(err) {
@@ -2753,6 +2754,17 @@
               $(combobox).data('silent', true);
               this.relationDataSource.removeSilent(selectItem, null, null);
             }
+          } else {
+            if (model) {
+              _scope.$apply(function () {
+                try {
+                  var data = eval('_scope.' + model);                  
+                  data = data.filter(it => it[dataValueField] !== dataItem[dataValueField]);
+                  $(combobox).data('silent', true);
+                  modelSetter(_scope, data);
+                } catch (e) {}
+              });
+            }
           }
 
           if (deselect) {
@@ -2764,21 +2776,28 @@
         options['select'] = function(e) {
           var dataItem = e.dataItem;
           var dataValueField = e.sender.options.dataValueField;
+          var combobox = e.sender;
+
           if (this.relationDataSource && dataItem[dataValueField]) {
             var obj = {};
             obj[this.relationField] = dataItem[dataValueField];
-            var combobox = e.sender;
             $(combobox).data('silent', true);
             this.relationDataSource.startInserting(obj, function(data){
               this.postSilent();
             }.bind(this.relationDataSource));
           } else {
             if (model) {
-              collection = _scope.vars["valor"];
-              if (Array.isArray(collection)) {
-                collection.push(dataItem);
-                //modelSetter(_scope, collection);
-              }
+              _scope.$apply(function () {
+                try {
+                  var data = eval('_scope.' + model);
+                  if (!data) {
+                    data = [];    
+                  }
+                  data.push(objectClone(dataItem, combobox.dataSource.options.schema.model.fields));
+                  $(combobox).data('silent', true);
+                  modelSetter(_scope, data);
+                } catch(e) {}
+              });
             }
           }
 
@@ -2813,21 +2832,13 @@
           var silent = $(combobox).data('silent');
           $(combobox).data('silent', false);
           if (!silent && (JSON.stringify(value) !== JSON.stringify(old))) {
-            combobox.value(convertArray(value));
+            if (relactionDS.relationDataSource && relactionDS.relationField) { 
+              combobox.value(convertArray(value));
+            } else {
+              combobox.value(value);
+            }
           }
         });
-
-        if (ngModelCtrl) {
-          ngModelCtrl.$formatters.push(function (value) {
-            
-            return value;
-          });
-
-          ngModelCtrl.$parsers.push(function (value) {
-
-            return value;
-          });
-        }
       }
     };
   })
@@ -3514,11 +3525,13 @@ function maskDirective($compile, $translate, $parse, attrName) {
         else
           $element.wrap("<div style=\"position:relative\"></div>");
         $element.datetimepicker(options);
+        var dtp = $element.datetimepicker(options).data('DateTimePicker');
 
         $element.on('dp.change', function () {
+          $element.data('silent', true);
           if ($(this).is(":visible")) {
             $(this).trigger('change');
-            scope.$apply(function () {
+            scope.safeApply(function () {
               var value = $element.val();
               var momentDate = null;
               if (useUTC) {
@@ -3535,6 +3548,8 @@ function maskDirective($compile, $translate, $parse, attrName) {
 
         if (ngModelCtrl) {
           ngModelCtrl.$formatters.push(function (value) {
+            var silent = $element.data('silent');
+            $element.data('silent', false);
             if (value) {
               var momentDate = null;
 
@@ -3550,7 +3565,15 @@ function maskDirective($compile, $translate, $parse, attrName) {
                 }
               }
 
+              if (!silent) {
+                dtp.date(momentDate.format(mask));
+              }
+
               return momentDate.format(mask);
+            }
+
+            if (!silent) {
+              dtp.date(null);
             }
 
             return null;
@@ -3651,7 +3674,7 @@ function maskDirective($compile, $translate, $parse, attrName) {
 
         if (ngModelCtrl) {
           ngModelCtrl.$formatters.push(function (value) {
-            if (value != undefined && value != null && value != '') {
+            if (value != undefined && value != null && value !== '') {
               return format(mask, value);
             }
 
@@ -3659,9 +3682,9 @@ function maskDirective($compile, $translate, $parse, attrName) {
           });
 
           ngModelCtrl.$parsers.push(function (value) {
-            if (value != undefined && value != null && value != '') {
+            if (value != undefined && value != null && value !== '') {
               var unmaskedvalue = $element.inputmask('unmaskedvalue');
-              if (unmaskedvalue != '')
+              if (unmaskedvalue !== '')
                 return unmaskedvalue;
             }
 
@@ -3754,7 +3777,7 @@ function parseMaskType(type, $translate) {
   else if (type == "integer") {
     type = $translate.instant('Format.Integer');
     if (type == 'Format.Integer')
-      type = '###,###.';
+      type = '#,##0.####';
   }
 
   else if (type == "week") {
@@ -4534,17 +4557,22 @@ window.useMask = function(value, format, type) {
 
   if (value != null && value != undefined) {
     if (value instanceof Date) {
-      resolvedValue = '"'+value.toISOString()+'"';
-    }
 
+      var useUTC = type == 'date' || type == 'datetime' || type == 'time';
+      var momentDate = moment(value);
+
+      if (!useUTC) {
+        momentDate.add(momentDate.utcOffset(), 'm');
+      }
+
+      resolvedValue = '"'+momentDate.format()+'"';
+    }
     else if (typeof value == 'number') {
       resolvedValue = value;
     }
-
     else {
       resolvedValue = '"'+value+'"';
     }
-
     mask = '{{ ' + resolvedValue + '  | mask:"' + resolvedType + '"}}';
   }
 
