@@ -1,0 +1,97 @@
+<h1 class="component-holder text-left h3" xattr-position="text-left" xattr-type="h3" data-component="crn-text-component" id="crn-text-component-24522">Produto</h1>
+
+<datasource data-component="crn-datasource" filter="" name="Produto" entity="app.Produto" keys="id" rows-per-page="100" class="" schema="[{&quot;name&quot;:&quot;id&quot;,&quot;type&quot;:&quot;String&quot;,&quot;nullable&quot;:false,&quot;key&quot;:true},{&quot;name&quot;:&quot;nome&quot;,&quot;type&quot;:&quot;String&quot;,&quot;nullable&quot;:true,&quot;key&quot;:false}]" condition="{&quot;params&quot;:[],&quot;expression&quot;:{&quot;type&quot;:&quot;OR&quot;,&quot;args&quot;:[{&quot;type&quot;:&quot;%&quot;,&quot;left&quot;:&quot;nome&quot;,&quot;right&quot;:&quot;{{vars.search|raw}}&quot;,&quot;args&quot;:[]}]}}" lazy="true"></datasource>
+
+    <div ng-hide="Produto.inserting || Produto.editing" data-component="crn-textinput" id="crn-datasource-filter-general24522" class="">
+      <div class="form-group">
+        <label for="textinput-filter" class="">{{"template.crud.search" | translate}}</label>
+        <input type="text" ng-model="vars.search" id="textinput-filter" class="form-control k-textbox" value="" placeholder="{{'template.crud.search' | translate}}">
+      </div>
+    </div>
+
+<div ng-hide="Produto.editing || Produto.inserting" class="component-holder ng-binding ng-scope" data-component="crn-cron-grid" id="cron-crn-grid-search">
+  <cron-grid
+      options="{&quot;dataSourceScreen&quot;:{&quot;name&quot;:&quot;Produto&quot;,&quot;entity&quot;:&quot;app.Produto&quot;,&quot;entityDataSource&quot;:{&quot;id&quot;:&quot;app.Produto&quot;,&quot;customId&quot;:&quot;Produto&quot;,&quot;name&quot;:&quot;Produto&quot;,&quot;customQueryName&quot;:&quot;app.Produto&quot;,&quot;paramValues&quot;:[],&quot;entityFullName&quot;:&quot;app.entity.Produto&quot;,&quot;schemaFields&quot;:[{&quot;name&quot;:&quot;id&quot;,&quot;type&quot;:&quot;String&quot;,&quot;nullable&quot;:false,&quot;key&quot;:true},{&quot;name&quot;:&quot;nome&quot;,&quot;type&quot;:&quot;String&quot;,&quot;nullable&quot;:true,&quot;key&quot;:false}],&quot;type&quot;:&quot;entity&quot;},&quot;schema&quot;:[{&quot;name&quot;:&quot;id&quot;,&quot;type&quot;:&quot;String&quot;,&quot;nullable&quot;:false,&quot;key&quot;:true},{&quot;name&quot;:&quot;nome&quot;,&quot;type&quot;:&quot;String&quot;,&quot;nullable&quot;:true,&quot;key&quot;:false}],&quot;id&quot;:&quot;app.Produto&quot;},&quot;allowPaging&quot;:true,&quot;allowSorting&quot;:true,&quot;allowGrouping&quot;:false,&quot;allowSelectionTotalPageToShow&quot;:true,&quot;allowRefreshGrid&quot;:true,&quot;allowSelectionRow&quot;:true,&quot;hideModalButtons&quot;:true,&quot;editable&quot;:&quot;datasource&quot;,&quot;columns&quot;:[{&quot;dataType&quot;:&quot;Database&quot;,&quot;field&quot;:&quot;nome&quot;,&quot;headerText&quot;:&quot;Nome&quot;,&quot;type&quot;:&quot;string&quot;,&quot;sortable&quot;:true,&quot;filterable&quot;:true,&quot;format&quot;:&quot;&quot;,&quot;visible&quot;:true,&quot;visibleCrud&quot;:true,&quot;linkParentType&quot;:&quot;screen&quot;,&quot;linkParentLoadIfEmpty&quot;:false,&quot;required&quot;:false,&quot;inputType&quot;:&quot;default&quot;,&quot;aggregates&quot;:[]},{&quot;dataType&quot;:&quot;Command&quot;,&quot;sortable&quot;:false,&quot;filterable&quot;:false,&quot;visible&quot;:true,&quot;visibleCrud&quot;:true,&quot;linkParentType&quot;:&quot;screen&quot;,&quot;linkParentLoadIfEmpty&quot;:false,&quot;command&quot;:&quot;edit|destroy&quot;,&quot;required&quot;:false,&quot;inputType&quot;:&quot;default&quot;,&quot;aggregates&quot;:[]}],&quot;toolBarButtons&quot;:[{&quot;type&quot;:&quot;Native&quot;,&quot;title&quot;:&quot;create&quot;}],&quot;details&quot;:[],&quot;groupings&quot;:[]}"
+      ng-model="vars.grid24522"
+      class=""
+      style="">
+  </cron-grid>
+</div>
+
+<div data-component="crn-form" id="crn-form-form-Produto-24522">
+  <div class="form" ng-show="Produto.editing || Produto.inserting">
+    <form crn-datasource="Produto" class="">
+      <div class="tool-bar" ng-hide="datasource.editing || datasource.inserting">
+        <button class="btn btn-primary btn-fab k-button" data-component="crn-button" ng-click="datasource.startInserting()"><span class="k-icon k-i-plus"></span></button>
+        <button class="btn btn-primary btn-fab k-button" data-component="crn-button" ng-click="datasource.startEditing()"><span class="k-icon k-i-edit"></span></button>
+        <button class="btn btn-primary btn-fab k-button" data-component="crn-button" ng-disabled="!datasource.hasPrevious()" ng-click="datasource.previous()"><span class="k-icon k-i-arrow-chevron-left"></span></button>
+        <button class="btn btn-primary btn-fab k-button" data-component="crn-button" ng-disabled="!datasource.hasNext()" ng-click="datasource.next()"><span class="k-icon k-i-arrow-chevron-right"></span></button>
+        <button class="btn btn-danger btn-fab k-button" data-component="crn-button" ng-click="datasource.remove()"><span class="k-icon k-i-close"></span></button>
+      </div>
+      <div class="active-bar" ng-hide="!datasource.editing &amp;&amp; !datasource.inserting">
+        <button class="btn btn-success btn-fab k-button" id="btn_crud_post41107" data-component="crn-button" ng-click="datasource.post()"><span class="k-icon k-i-check"></span></button>
+        <button class="btn btn-danger btn-fab k-button" id="btn_crud_cancel41107" data-component="crn-button" ng-click="datasource.cancel()"><span class="k-icon k-i-cancel"></span></button>
+      </div>
+      <br/>
+      <fieldset ng-disabled="!datasource.editing &amp;&amp; !datasource.inserting">
+
+
+                <div data-component="crn-textinput" id="crn-textinput-nome-24522" class="">
+                  <div class="form-group">
+                        <label for="textinput-nome" class="">Nome</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <input
+                                            type="text"
+                                            ng-model="Produto.active.nome"
+                                            class="form-control k-textbox"
+                                            id="textinput-nome"
+                                            placeholder="Nome"
+                                            mask=""
+                                            mask-placeholder=""
+                                            ng-required="false">
+                         <!-- end if !model.hasCronappFramework() -->
+                  </div>
+                </div>
+        <!-- NtoN  -->
+
+				<datasource
+            data-component="crn-datasource"
+            name="ProdutoMarca"
+            entity="app.ProdutoMarca"
+            keys="id"
+            dependent-lazy-post="Produto"
+            rows-per-page="100"
+            parameters="produto={{Produto.active.id|raw}}"
+            schema="[{&quot;name&quot;:&quot;id&quot;,&quot;type&quot;:&quot;String&quot;,&quot;nullable&quot;:false,&quot;key&quot;:true},{&quot;name&quot;:&quot;produto&quot;,&quot;type&quot;:&quot;String&quot;,&quot;nullable&quot;:true,&quot;key&quot;:false},{&quot;name&quot;:&quot;marca&quot;,&quot;type&quot;:&quot;String&quot;,&quot;nullable&quot;:true,&quot;key&quot;:false},{&quot;name&quot;:&quot;produto_nome&quot;,&quot;type&quot;:&quot;String&quot;,&quot;nullable&quot;:true,&quot;key&quot;:false},{&quot;name&quot;:&quot;marca_nome&quot;,&quot;type&quot;:&quot;String&quot;,&quot;nullable&quot;:true,&quot;key&quot;:false}]"
+            lazy=true
+        >
+        </datasource>
+
+					<datasource data-component="crn-datasource" name="MarcaNCombo" entity="app.Marca" keys="id" schema="[{&quot;name&quot;:&quot;id&quot;,&quot;type&quot;:&quot;String&quot;,&quot;nullable&quot;:false,&quot;key&quot;:true},{&quot;name&quot;:&quot;nome&quot;,&quot;type&quot;:&quot;String&quot;,&quot;nullable&quot;:true,&quot;key&quot;:false}]"></datasource>
+                    <div class="component-holder ng-binding ng-scope " data-component="crn-enterprise-combobox-multiple" ng-show="datasource.editing || datasource.inserting" >
+                      <div class="form-group">
+                        <label for="select-ui">Marca</label>
+                        <cron-multi-select
+                            options="{&quot;dataSourceScreen&quot;:{&quot;name&quot;:&quot;MarcaNCombo&quot;,&quot;entity&quot;:&quot;app.Marca&quot;,&quot;entityDataSource&quot;:{&quot;id&quot;:&quot;app.Marca&quot;,&quot;customId&quot;:&quot;Marca&quot;,&quot;name&quot;:&quot;MarcaNCombo&quot;,&quot;customQueryName&quot;:&quot;app.Marca&quot;,&quot;paramValues&quot;:[],&quot;entityFullName&quot;:&quot;app.entity.Marca&quot;,&quot;schemaFields&quot;:[{&quot;name&quot;:&quot;id&quot;,&quot;type&quot;:&quot;String&quot;,&quot;nullable&quot;:false,&quot;key&quot;:true},{&quot;name&quot;:&quot;nome&quot;,&quot;type&quot;:&quot;String&quot;,&quot;nullable&quot;:true,&quot;key&quot;:false}],&quot;type&quot;:&quot;entity&quot;},&quot;schema&quot;:[{&quot;name&quot;:&quot;id&quot;,&quot;type&quot;:&quot;String&quot;,&quot;nullable&quot;:false,&quot;key&quot;:true},{&quot;name&quot;:&quot;nome&quot;,&quot;type&quot;:&quot;String&quot;,&quot;nullable&quot;:true,&quot;key&quot;:false}],&quot;id&quot;:&quot;app.Marca&quot;},&quot;filter&quot;:&quot;contains&quot;,&quot;dataTextField&quot;:&quot;nome&quot;,&quot;dataValueField&quot;:&quot;id&quot;,&quot;dynamic&quot;:true,&quot;valuePrimitive&quot;:true,&quot;relationDataSource&quot;:{&quot;name&quot;:&quot;ProdutoMarca&quot;,&quot;entity&quot;:&quot;app.ProdutoMarca&quot;,&quot;entityDataSource&quot;:{&quot;id&quot;:&quot;app.ProdutoMarca&quot;,&quot;customId&quot;:&quot;ProdutoMarca&quot;,&quot;name&quot;:&quot;ProdutoMarca&quot;,&quot;customQueryName&quot;:&quot;app.ProdutoMarca&quot;,&quot;paramValues&quot;:[],&quot;entityFullName&quot;:&quot;app.entity.ProdutoMarca&quot;,&quot;schemaFields&quot;:[{&quot;name&quot;:&quot;id&quot;,&quot;type&quot;:&quot;String&quot;,&quot;nullable&quot;:false,&quot;key&quot;:true},{&quot;name&quot;:&quot;produto&quot;,&quot;type&quot;:&quot;String&quot;,&quot;nullable&quot;:true,&quot;key&quot;:false},{&quot;name&quot;:&quot;marca&quot;,&quot;type&quot;:&quot;String&quot;,&quot;nullable&quot;:true,&quot;key&quot;:false},{&quot;name&quot;:&quot;produto_nome&quot;,&quot;type&quot;:&quot;String&quot;,&quot;nullable&quot;:true,&quot;key&quot;:false},{&quot;name&quot;:&quot;marca_nome&quot;,&quot;type&quot;:&quot;String&quot;,&quot;nullable&quot;:true,&quot;key&quot;:false}],&quot;type&quot;:&quot;entity&quot;},&quot;schema&quot;:[{&quot;name&quot;:&quot;id&quot;,&quot;type&quot;:&quot;String&quot;,&quot;nullable&quot;:false,&quot;key&quot;:true},{&quot;name&quot;:&quot;produto&quot;,&quot;type&quot;:&quot;String&quot;,&quot;nullable&quot;:true,&quot;key&quot;:false},{&quot;name&quot;:&quot;marca&quot;,&quot;type&quot;:&quot;String&quot;,&quot;nullable&quot;:true,&quot;key&quot;:false},{&quot;name&quot;:&quot;produto_nome&quot;,&quot;type&quot;:&quot;String&quot;,&quot;nullable&quot;:true,&quot;key&quot;:false},{&quot;name&quot;:&quot;marca_nome&quot;,&quot;type&quot;:&quot;String&quot;,&quot;nullable&quot;:true,&quot;key&quot;:false}],&quot;id&quot;:&quot;app.ProdutoMarca&quot;},&quot;relationField&quot;:&quot;marca&quot;,&quot;staticDataSource&quot;:[],&quot;filterKeyValues&quot;:{&quot;&quot;:&quot;&quot;,&quot;contains&quot;:&quot;Contendo&quot;,&quot;startswith&quot;:&quot;Iniciando com&quot;,&quot;endswith&quot;:&quot;Final com&quot;},&quot;changeCursor&quot;:true}"
+                            ng-required="false"
+                            id="comboboxMarca"
+                            name="comboboxMarca"
+                            ng-model="ProdutoMarca.data"
+                            class="crn-select form-control" style="">
+                        </cron-multi-select>
+                      </div>
+                    </div>
+        <!-- NtoN  end-->
+      </fieldset>
+    </form>
+    <form>
+      <fieldset>
+        <!-- OneToN -->
+        <!-- OneToOne  end -->
+      </fieldset>
+    </form>
+    &ensp;
+  </div>
+</div>
+
+
