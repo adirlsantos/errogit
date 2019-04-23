@@ -82,7 +82,9 @@ public class Class1 implements Serializable {
    */
   
   public java.lang.String getAttribute_01(){
-    this.attribute_01 = this.attribute_01 + "Teste";
+    if (this.attribute_01 == null) {
+      this.attribute_01 = "VAZIO";
+    }
     return this.attribute_01;
   }
 
