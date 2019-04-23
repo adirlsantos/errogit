@@ -96,16 +96,6 @@ public class Class1 implements Serializable {
   }
 
   /**
-   * Obtém attribute_02
-   * return attribute_02
-   * @generated
-   */
-  
-  public java.lang.String getAttribute_02(){
-    return this.attribute_02;
-  }
-
-  /**
    * Define attribute_02
    * @param attribute_02 attribute_02
    * @generated
