@@ -127,14 +127,4 @@ public class Class1 implements Serializable {
     return true;
   }
 
-  /**
-   * @generated
-   */
-  @Override
-  public int hashCode() {
-    int result = 1;
-    result = 31 * result + ((id == null) ? 0 : id.hashCode());
-    return result;
-  }
-
 }
