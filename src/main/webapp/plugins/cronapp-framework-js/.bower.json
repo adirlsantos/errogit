@@ -44,12 +44,12 @@
   "resolutions": {
     "angular": "1.5.9"
   },
-  "_release": "e1a59b2b3f",
+  "_release": "c769ccbd4f",
   "_resolution": {
     "type": "commit",
-    "commit": "e1a59b2b3f96522a6a5d290ad962e22dfc9a8cfe"
+    "commit": "c769ccbd4fdd998f189972c41917b954794ed225"
   },
   "_source": "https://github.com/technecloud/cronapp-framework-js.git",
-  "_target": "e1a59b2b3f96522a6a5d290ad962e22dfc9a8cfe",
+  "_target": "c769ccbd4fdd998f189972c41917b954794ed225",
   "_originalSource": "cronapp-framework-js"
 }

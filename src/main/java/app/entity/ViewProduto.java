@@ -10,16 +10,15 @@ import cronapi.rest.security.CronappSecurity;
 
 
 /**
- * Classe que representa a tabela RECURO
+ * Classe que representa a tabela view_produto
  * @generated
  */
 @Entity
-@Table(name = "\"RECURO\"" ,uniqueConstraints=@UniqueConstraint(columnNames={
-"outroid" }))
+@Table(name = "\"view_produto\"")
 @XmlRootElement
 @CronappSecurity
-@JsonFilter("app.entity.Recuro")
-public class Recuro implements Serializable {
+@JsonFilter("app.entity.ViewProduto")
+public class ViewProduto implements Serializable {
 
   /**
    * UID da classe, necessário na serialização
@@ -31,9 +30,8 @@ public class Recuro implements Serializable {
    * @generated
    */
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name = "id", nullable = false, insertable=true, updatable=true)
-  private java.lang.Integer id;
+  @Column(name = "id", nullable = true, insertable=true, updatable=true)
+  private java.lang.String id = UUID.randomUUID().toString().toUpperCase();
 
   /**
   * @generated
@@ -43,17 +41,10 @@ public class Recuro implements Serializable {
   private java.lang.String nome;
 
   /**
-  * @generated
-  */
-  @Column(name = "outroid", nullable = true, unique = true, insertable=true, updatable=true)
-  
-  private java.lang.String outroid = UUID.randomUUID().toString().toUpperCase();
-
-  /**
    * Construtor
    * @generated
    */
-  public Recuro(){
+  public ViewProduto(){
   }
 
 
@@ -63,7 +54,7 @@ public class Recuro implements Serializable {
    * @generated
    */
   
-  public java.lang.Integer getId(){
+  public java.lang.String getId(){
     return this.id;
   }
 
@@ -72,7 +63,7 @@ public class Recuro implements Serializable {
    * @param id id
    * @generated
    */
-  public Recuro setId(java.lang.Integer id){
+  public ViewProduto setId(java.lang.String id){
     this.id = id;
     return this;
   }
@@ -92,28 +83,8 @@ public class Recuro implements Serializable {
    * @param nome nome
    * @generated
    */
-  public Recuro setNome(java.lang.String nome){
+  public ViewProduto setNome(java.lang.String nome){
     this.nome = nome;
-    return this;
-  }
-
-  /**
-   * Obtém outroid
-   * return outroid
-   * @generated
-   */
-  
-  public java.lang.String getOutroid(){
-    return this.outroid;
-  }
-
-  /**
-   * Define outroid
-   * @param outroid outroid
-   * @generated
-   */
-  public Recuro setOutroid(java.lang.String outroid){
-    this.outroid = outroid;
     return this;
   }
 
@@ -124,7 +95,7 @@ public class Recuro implements Serializable {
   public boolean equals(Object obj) {
     if (this == obj) return true;
     if (obj == null || getClass() != obj.getClass()) return false;
-    Recuro object = (Recuro)obj;
+    ViewProduto object = (ViewProduto)obj;
     if (id != null ? !id.equals(object.id) : object.id != null) return false;
     return true;
   }

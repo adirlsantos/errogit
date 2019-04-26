@@ -17,23 +17,23 @@ import org.springframework.transaction.annotation.*;
  * 
  * @generated
  */
-@Repository("RecuroDAO")
+@Repository("ViewProdutoDAO")
 @Transactional(transactionManager="app-TransactionManager")
-public interface RecuroDAO extends JpaRepository<Recuro, java.lang.Integer> {
+public interface ViewProdutoDAO extends JpaRepository<ViewProduto, java.lang.String> {
 
   /**
-   * Obtém a instância de Recuro utilizando os identificadores
+   * Obtém a instância de ViewProduto utilizando os identificadores
    * 
    * @param id
    *          Identificador 
    * @return Instância relacionada com o filtro indicado
    * @generated
    */    
-  @Query("SELECT entity FROM Recuro entity WHERE entity.id = :id")
-  public Recuro findOne(@Param(value="id") java.lang.Integer id);
+  @Query("SELECT entity FROM ViewProduto entity WHERE entity.id = :id")
+  public ViewProduto findOne(@Param(value="id") java.lang.String id);
 
   /**
-   * Remove a instância de Recuro utilizando os identificadores
+   * Remove a instância de ViewProduto utilizando os identificadores
    * 
    * @param id
    *          Identificador 
@@ -41,8 +41,8 @@ public interface RecuroDAO extends JpaRepository<Recuro, java.lang.Integer> {
    * @generated
    */    
   @Modifying
-  @Query("DELETE FROM Recuro entity WHERE entity.id = :id")
-  public void delete(@Param(value="id") java.lang.Integer id);
+  @Query("DELETE FROM ViewProduto entity WHERE entity.id = :id")
+  public void delete(@Param(value="id") java.lang.String id);
 
 
 

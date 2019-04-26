@@ -22,9 +22,9 @@
     "src"
   ],
   "dependencies": {
-    "cronapp-framework-js": "e1a59b2b3f96522a6a5d290ad962e22dfc9a8cfe",
+    "cronapp-framework-js": "c769ccbd4fdd998f189972c41917b954794ed225",
     "cronapp-common-js": "18db2afe2bf7342935847902c531a5f773cdc34c",
-    "cronapi-js": "cf68d1b4bd0274ab29a9882835c2275a2dc94df2",
+    "cronapi-js": "ef9e0b2626941dec6185a7efa22c3894a880cda2",
     "cronapp-lib-js": "1a44835022502da2ea31470aafb419d5ec3d1af5"
   }
 }

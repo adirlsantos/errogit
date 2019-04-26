@@ -17,23 +17,23 @@ import org.springframework.transaction.annotation.*;
  * 
  * @generated
  */
-@Repository("Class1DAO")
+@Repository("ViewMarcaDAO")
 @Transactional(transactionManager="app-TransactionManager")
-public interface Class1DAO extends JpaRepository<Class1, java.lang.String> {
+public interface ViewMarcaDAO extends JpaRepository<ViewMarca, java.lang.String> {
 
   /**
-   * Obtém a instância de Class1 utilizando os identificadores
+   * Obtém a instância de ViewMarca utilizando os identificadores
    * 
    * @param id
    *          Identificador 
    * @return Instância relacionada com o filtro indicado
    * @generated
    */    
-  @Query("SELECT entity FROM Class1 entity WHERE entity.id = :id")
-  public Class1 findOne(@Param(value="id") java.lang.String id);
+  @Query("SELECT entity FROM ViewMarca entity WHERE entity.id = :id")
+  public ViewMarca findOne(@Param(value="id") java.lang.String id);
 
   /**
-   * Remove a instância de Class1 utilizando os identificadores
+   * Remove a instância de ViewMarca utilizando os identificadores
    * 
    * @param id
    *          Identificador 
@@ -41,7 +41,7 @@ public interface Class1DAO extends JpaRepository<Class1, java.lang.String> {
    * @generated
    */    
   @Modifying
-  @Query("DELETE FROM Class1 entity WHERE entity.id = :id")
+  @Query("DELETE FROM ViewMarca entity WHERE entity.id = :id")
   public void delete(@Param(value="id") java.lang.String id);
 
 

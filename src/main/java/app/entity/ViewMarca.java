@@ -10,15 +10,15 @@ import cronapi.rest.security.CronappSecurity;
 
 
 /**
- * Classe que representa a tabela CLASS1
+ * Classe que representa a tabela view_marca
  * @generated
  */
 @Entity
-@Table(name = "\"CLASS1\"")
+@Table(name = "\"view_marca\"")
 @XmlRootElement
 @CronappSecurity
-@JsonFilter("app.entity.Class1")
-public class Class1 implements Serializable {
+@JsonFilter("app.entity.ViewMarca")
+public class ViewMarca implements Serializable {
 
   /**
    * UID da classe, necessário na serialização
@@ -30,28 +30,21 @@ public class Class1 implements Serializable {
    * @generated
    */
   @Id
-  @Column(name = "id", nullable = false, insertable=true, updatable=true)
+  @Column(name = "id", nullable = true, insertable=true, updatable=true)
   private java.lang.String id = UUID.randomUUID().toString().toUpperCase();
 
   /**
   * @generated
   */
-  @Column(name = "attribute_01", nullable = true, unique = false, insertable=true, updatable=true)
+  @Column(name = "nome", nullable = true, unique = false, insertable=true, updatable=true)
   
-  private java.lang.String attribute_01;
-
-  /**
-  * @generated
-  */
-  @Column(name = "attribute_02", nullable = true, unique = false, insertable=true, updatable=true)
-  
-  private java.lang.String attribute_02;
+  private java.lang.String nome;
 
   /**
    * Construtor
    * @generated
    */
-  public Class1(){
+  public ViewMarca(){
   }
 
 
@@ -70,41 +63,28 @@ public class Class1 implements Serializable {
    * @param id id
    * @generated
    */
-  public Class1 setId(java.lang.String id){
+  public ViewMarca setId(java.lang.String id){
     this.id = id;
     return this;
   }
 
   /**
-   * Obtém attribute_01
-   * return attribute_01
+   * Obtém nome
+   * return nome
    * @generated
    */
   
-  public java.lang.String getAttribute_01(){
-    if (this.attribute_01 == null) {
-      this.attribute_01 = "VAZIO";
-    }
-    return this.attribute_01;
+  public java.lang.String getNome(){
+    return this.nome;
   }
 
   /**
-   * Define attribute_01
-   * @param attribute_01 attribute_01
+   * Define nome
+   * @param nome nome
    * @generated
    */
-  public Class1 setAttribute_01(java.lang.String attribute_01){
-    this.attribute_01 = attribute_01;
-    return this;
-  }
-
-  /**
-   * Define attribute_02
-   * @param attribute_02 attribute_02
-   * @generated
-   */
-  public Class1 setAttribute_02(java.lang.String attribute_02){
-    this.attribute_02 = attribute_02;
+  public ViewMarca setNome(java.lang.String nome){
+    this.nome = nome;
     return this;
   }
 
@@ -115,9 +95,19 @@ public class Class1 implements Serializable {
   public boolean equals(Object obj) {
     if (this == obj) return true;
     if (obj == null || getClass() != obj.getClass()) return false;
-    Class1 object = (Class1)obj;
+    ViewMarca object = (ViewMarca)obj;
     if (id != null ? !id.equals(object.id) : object.id != null) return false;
     return true;
+  }
+
+  /**
+   * @generated
+   */
+  @Override
+  public int hashCode() {
+    int result = 1;
+    result = 31 * result + ((id == null) ? 0 : id.hashCode());
+    return result;
   }
 
 }
